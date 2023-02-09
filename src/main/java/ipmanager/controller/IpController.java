@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import ipmanager.model.Employee;
 import ipmanager.model.Ip;
+import ipmanager.repository.EmployeeRepository;
 import ipmanager.service.impl.IpServiceImpl;
 
 @Controller
@@ -16,6 +18,9 @@ import ipmanager.service.impl.IpServiceImpl;
 public class IpController {
 	@Autowired
 	private IpServiceImpl ipServiceImpl;
+	
+	@Autowired
+	private EmployeeRepository empRepo;
 
 	@GetMapping("")
 	public String displayIps(Model model) {
@@ -24,5 +29,19 @@ public class IpController {
 		model.addAttribute("ipList", ips);
 		
 		return "ips/list-ips";
+	}
+	
+	@GetMapping("/new")
+	public String createIp(Model model) {
+		
+		Ip anIp = new Ip();
+			
+		List<Employee> employees = empRepo.findAll();
+		
+		model.addAttribute("ip", anIp);
+		
+		model.addAttribute("allEmployees", employees);
+
+		return "ips/new-ip";
 	}
 }

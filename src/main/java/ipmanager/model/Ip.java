@@ -37,7 +37,11 @@ public class Ip {
 	@JoinTable(name="ip_employee", 
 				joinColumns=@JoinColumn(name="ip_id"),
 				inverseJoinColumns=@JoinColumn(name="employee_id"))
-	private List<Employee> employee;
+	private List<Employee> employees;
+
+	public Ip() {
+		super();
+	}
 
 	public String getStatus() {
 		return status;
@@ -143,12 +147,16 @@ public class Ip {
 		this.query = query;
 	}
 
-	public List<Employee> getEmployee() {
-		return employee;
+	public List<Employee> getEmployees() {
+		return employees;
 	}
 
-	public void setEmployee(List<Employee> employee) {
-		this.employee = employee;
+	public void setEmployees(List<Employee> employees) {
+		this.employees = employees;
+	}
+
+	public Long getIpId() {
+		return ipId;
 	}
 
 }

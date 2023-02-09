@@ -71,4 +71,10 @@ public class Employee {
 		this.email = email;
 	}
 
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+
+	
+
 }

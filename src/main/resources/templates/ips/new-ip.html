@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header" />
+
+<body>
+	<nav th:replace="layouts :: navbar"></nav>
+	<div class="container  mt-3 d-flex flex-column align-items-start">
+		<h3>Create a new IP</h3>
+		<form action="/ips/save" th:object="${ip}" method="POST" class="mt-3 d-flex flex-column ">
+
+			<div class="form-group">
+				<label for="query">IP</label> <input type="text" placeholder="site.com" th:field="${ip.query}">
+			</div>
+			<label for="employees">Employee </label>
+			<div class="form-group">
+				<select th:field="*{employees}" multiple="multiple">
+					<option th:each="employee : ${allEmployees}" th:value="${employee.employeeId}"
+						th:text="${employee.firstName} + ' ' + ${employee.lastName}">
+					</option>
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Create IP</button>
+		</form>
+
+	</div>
+
+</body>
+
+</html>
