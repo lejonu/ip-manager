@@ -25,4 +25,16 @@ public class EmployeeController {
 		
 		return "employees/list-employees";
 	}
+	
+	@GetMapping("/new")
+	public String Employee(Model model) {
+
+		Employee anEmployee = new Employee();
+
+		model.addAttribute("employee", anEmployee);
+
+		return "employees/new-employee";
+	}
+
+	
 }
