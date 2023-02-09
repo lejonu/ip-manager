@@ -2,17 +2,21 @@ package ipmanager.model;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Ip {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ipAddressId;
+	private Long ipId;
 
 	private String status;
 	private String country;
@@ -28,16 +32,12 @@ public class Ip {
 	private String org;
 	private String query;
 
-	@ManyToMany
+	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST },
+			fetch = FetchType.LAZY)
+	@JoinTable(name="ip_employee", 
+				joinColumns=@JoinColumn(name="ip_id"),
+				inverseJoinColumns=@JoinColumn(name="employee_id"))
 	private List<Employee> employee;
-
-	public Long getIpAddressId() {
-		return ipAddressId;
-	}
-
-	public void setIpAddressId(Long ipAddressId) {
-		this.ipAddressId = ipAddressId;
-	}
 
 	public String getStatus() {
 		return status;
