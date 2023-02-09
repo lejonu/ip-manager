@@ -12,7 +12,7 @@ import ipmanager.service.IpApiService;
 import ipmanager.service.IpService;
 
 @Service
-public class IpServiceImpl implements IpService{
+public class IpServiceImpl implements IpService {
 	@Autowired
 	private EmployeeRepository empRepo;
 
@@ -35,20 +35,27 @@ public class IpServiceImpl implements IpService{
 
 	@Override
 	public void save(Ip ip) {
-		// TODO Auto-generated method stub
+
+		saveWitEmployee(ip);
+	}
+
+	private void saveWitEmployee(Ip ip) {
+		Ip newIp = ipApiService.consultIP(ip.getQuery());
+		newIp.setEmployees(ip.getEmployees());
 		
+		ipRepo.save(newIp);
 	}
 
 	@Override
 	public void update(Long id, Ip ip) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

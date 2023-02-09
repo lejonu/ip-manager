@@ -8,6 +8,6 @@ import ipmanager.model.Ip;
 
 @FeignClient(name = "ip-api", url = "http://ip-api.com/json")
 public interface IpApiService {
-	@GetMapping("/{ip}")
-	Ip consultIP(@PathVariable("ip") String ip);
+	@GetMapping("/{query}")
+	Ip consultIP(@PathVariable("query") String query);
 }

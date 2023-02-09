@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ipmanager.model.Employee;
@@ -43,5 +44,13 @@ public class IpController {
 		model.addAttribute("allEmployees", employees);
 
 		return "ips/new-ip";
+	}
+	
+	@PostMapping("/save")
+	public String createProject(Ip ip, Model model) {
+
+		ipServiceImpl.save(ip);
+
+		return "redirect:/ips";
 	}
 }
