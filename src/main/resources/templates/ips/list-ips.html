@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header" />
+
+<body>
+
+	<nav th:replace="layouts :: navbar" />
+
+	<div class="container mt-3">
+		<!-- Add New IP Button -->
+		<a th:href="@{/ips/new}" class="btn btn-primary btn-sm mb-3">New IP</a>
+
+		<h4>IPs</h4>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Query</th>
+					<th>status</th>
+					<th>country</th>
+					<th>region</th>
+					<th>city</th>
+					<th>zip</th>
+					<th>lat</th>
+					<th>lon</th>
+					<th>timezone</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="anIp : ${ipList}">
+					<td th:text="${anIp.query}" />
+					<td th:text="${anIp.status}" />
+					<td th:text="${anIp.contry}" />
+					<td th:text="${anIp.region}" />
+					<td th:text="${anIp.city}" />
+					<td th:text="${anIp.zip}" />
+					<td th:text="${anIp.lat}" />
+					<td th:text="${anIp.lon}" />
+					<td th:text="${anIp.timezone}" />
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+
+</html>
