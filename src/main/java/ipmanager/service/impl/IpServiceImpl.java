@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import ipmanager.dto.ChartData;
 import ipmanager.model.Ip;
 import ipmanager.repository.EmployeeRepository;
 import ipmanager.repository.IpRepository;
@@ -58,5 +60,6 @@ public class IpServiceImpl implements IpService {
 		ipRepo.deleteById(id);;
 
 	}
+
 
 }
