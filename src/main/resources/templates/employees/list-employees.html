@@ -5,12 +5,13 @@
 <head th:replace="layouts :: header" />
 
 <body>
-	
+
 	<nav th:replace="layouts :: navbar" />
 
 	<div class="container mt-3">
 		<!-- Add New In Charge Button -->
-		<a th:href="@{/employees/new}" class="btn btn-primary btn-sm mb-3">New Employee</a>
+		<a th:href="@{/employees/new}" class="btn btn-primary btn-sm mb-3">New
+			Employee</a>
 
 		<h4>Employees</h4>
 		<table class="table table-bordered table-striped">
@@ -19,6 +20,7 @@
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Email Address</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +28,9 @@
 					<td th:text="${anEmployee.firstName}" />
 					<td th:text="${anEmployee.lastName}" />
 					<td th:text="${anEmployee.email}" />
+					<td><a
+						th:href="@{/employees/delete/{id}(id=${anEmployee.employeeId})}"
+						class="btn btn-danger">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>
