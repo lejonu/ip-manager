@@ -1,6 +1,7 @@
 package ipmanager.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,8 @@ public class IpServiceImpl implements IpService {
 
 	@Override
 	public Ip findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Ip> ip = ipRepo.findById(id);
+		return ip.get();
 	}
 
 	@Override
@@ -54,7 +55,7 @@ public class IpServiceImpl implements IpService {
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
+		ipRepo.deleteById(id);;
 
 	}
 
