@@ -75,6 +75,11 @@ public class Employee {
 		return employeeId;
 	}
 
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
+	}
+
+
 	
 
 }
