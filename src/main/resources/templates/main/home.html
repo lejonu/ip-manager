@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts :: header" />
+<nav th:replace="layouts :: navbar" />
+
+<body>
+
+	<div class="container">
+		<h3>Main Dashboard</h3>
+		<a th:text="${versionNumber}"></a>
+		<hr />
+		<h4>Current Ips</h4>
+		<div class="row">
+			<div class="col-md-12">
+
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Ip</th>
+							<th>Country</th>
+							<th>Org</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="anIp : ${ipList}">
+							<td th:text="${anIp.query}" />
+							<td th:text="${anIp.country}" />
+							<td th:text="${anIp.org}" />
+							<td th:text="${anIp.status}" />
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="col-md-4">
+				<canvas id="myPieChart" height="50" width="50"></canvas>
+				<script>
+					var chartData = "[[${projectStatusCnt}]]"
+				</script>
+			</div>
+		</div>
+
+	</div>
+	<div class="container">
+		<h4>Current Employees</h4>
+		<div class="row">
+			<div class="col-md-12">
+
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th>Employee Name</th>
+							<th>Employee Last Name</th>
+							<th>Employee Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aEmployee : ${employeeList}">
+							<td th:text="${aEmployee.firstName}" />
+							<td th:text="${aEmployee.lastName}" />
+							<td th:text="${aEmployee.email}" />
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
+</html>
