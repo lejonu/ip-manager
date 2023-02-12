@@ -45,6 +45,7 @@ public class IpServiceImpl implements IpService {
 	private void saveWitEmployee(Ip ip) {
 		Ip newIp = ipApiService.consultIP(ip.getQuery());
 		newIp.setEmployees(ip.getEmployees());
+		newIp.setStage(ip.getStage());
 		
 		ipRepo.save(newIp);
 	}

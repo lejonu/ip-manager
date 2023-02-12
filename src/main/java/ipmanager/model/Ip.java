@@ -31,13 +31,23 @@ public class Ip {
 	private String isp;
 	private String org;
 	private String query;
+	private String stage;
 
-	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST },
-			fetch = FetchType.LAZY)
-	@JoinTable(name="ip_employee", 
-				joinColumns=@JoinColumn(name="ip_id"),
-				inverseJoinColumns=@JoinColumn(name="employee_id"))
+	@ManyToMany(cascade = { CascadeType.DETACH, CascadeType.REFRESH, CascadeType.PERSIST }, fetch = FetchType.LAZY)
+	@JoinTable(name = "ip_employee", joinColumns = @JoinColumn(name = "ip_id"), inverseJoinColumns = @JoinColumn(name = "employee_id"))
 	private List<Employee> employees;
+
+	public String getStage() {
+		return stage;
+	}
+
+	public void setStage(String stage) {
+		this.stage = stage;
+	}
+
+	public void setIpId(Long ipId) {
+		this.ipId = ipId;
+	}
 
 	public Ip() {
 		super();

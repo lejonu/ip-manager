@@ -12,6 +12,6 @@ public interface IpRepository extends CrudRepository<Ip, Long> {
 	@Override
 	public List<Ip> findAll();
 
-	@Query(nativeQuery = true, value = "SELECT query AS label, COUNT(*) AS total FROM ip GROUP BY query")
-	public List<ChartData> getIpCount();
+	@Query(nativeQuery = true, value = "SELECT stage AS label, COUNT(*) AS total FROM ip GROUP BY stage")
+	public List<ChartData> getStageCount();
 }

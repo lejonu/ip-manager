@@ -19,17 +19,15 @@
 					<thead class="thead-dark">
 						<tr>
 							<th>Ip</th>
-							<th>Country</th>
 							<th>Org</th>
-							<th>Status</th>
+							<th>Stage</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="anIp : ${ipList}">
 							<td th:text="${anIp.query}" />
-							<td th:text="${anIp.country}" />
 							<td th:text="${anIp.org}" />
-							<td th:text="${anIp.status}" />
+							<td th:text="${anIp.stage}" />
 						</tr>
 					</tbody>
 				</table>
@@ -38,27 +36,25 @@
 			<div class="col-md-4">
 				<canvas id="ipChart" height="50" width="50"></canvas>
 				<script>
-					var chartData = "[[${ipQueryCount}]]"
+					var chartData = "[[${ipStageCount}]]"
 				</script>
 			</div>
 		</div>
 
 		<h4>Current Employees</h4>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-12">
 
 				<table class="table table-bordered table-striped">
 					<thead class="thead-dark">
 						<tr>
-							<th>Employee Name</th>
-							<th>Employee Last Name</th>
+							<th>Name</th>
 							<th>Ip Count</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="aEmployeeIpCount : ${employeeListIpCount}">
-							<td th:text="${aEmployeeIpCount.firstName}" />
-							<td th:text="${aEmployeeIpCount.lastName}" />
+							<td th:text="| ${aEmployeeIpCount.firstName} ${aEmployeeIpCount.lastName}|" />
 							<td th:text="${aEmployeeIpCount.ipCount}" />
 						</tr>
 
@@ -66,9 +62,7 @@
 				</table>
 
 			</div>
-			<div class="col-md-4">
-	
-			</div>
+
 		</div>
 	</div>
 

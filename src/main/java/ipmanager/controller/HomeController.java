@@ -41,7 +41,7 @@ public class HomeController {
 		List<Ip> ips = ipImplRepo.findAll();
 		model.addAttribute("ipList", ips);
 
-		List<ChartData> ipData = ipRepo.getIpCount();
+		List<ChartData> ipData = ipRepo.getStageCount();
 
 		Map<String, Object> map = new HashMap<>();
 
@@ -49,7 +49,7 @@ public class HomeController {
 
 		String jsonString = objectMapper.writeValueAsString(ipData);
 		
-		model.addAttribute("ipQueryCount", jsonString);
+		model.addAttribute("ipStageCount", jsonString);
 
 		List<EmployeeIp> employeesIpCount = empRepo.employeeIps();
 		model.addAttribute("employeeListIpCount", employeesIpCount);

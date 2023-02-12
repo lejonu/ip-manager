@@ -23,7 +23,7 @@
 					<th>Region</th>
 					<th>City</th>
 					<th>Zip</th>
-					<th>Timezone</th>
+					<th>Stage</th>
 					<th>Delete</th>
 				</tr>
 			</thead>
@@ -35,7 +35,7 @@
 					<td th:text="${anIp.region}" />
 					<td th:text="${anIp.city}" />
 					<td th:text="${anIp.zip}" />
-					<td th:text="${anIp.timezone}" />
+					<td th:text="${anIp.stage}" />
 					<td><a th:href="@{/ips/delete/{id}(id=${anIp.ipId})}"
 						class="btn btn-danger">Delete</a></td>
 				</tr>
