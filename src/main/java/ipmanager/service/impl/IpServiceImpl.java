@@ -66,7 +66,11 @@ public class IpServiceImpl implements IpService {
 	@Override
 	public void delete(Long id) {
 		ipRepo.deleteById(id);
+	}
 
+	
+	public void deleteIp(Ip ip) {
+		ipRepo.delete(ip);
 	}
 
 }
