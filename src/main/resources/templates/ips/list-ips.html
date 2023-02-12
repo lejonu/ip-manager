@@ -24,7 +24,8 @@
 					<th>City</th>
 					<th>Zip</th>
 					<th>Stage</th>
-					<th>Delete</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,6 +37,8 @@
 					<td th:text="${anIp.city}" />
 					<td th:text="${anIp.zip}" />
 					<td th:text="${anIp.stage}" />
+					<td><a th:href="@{/ips/edit/{id}(id=${anIp.ipId})}"
+						class="btn btn-secondary">Edit</a></td>
 					<td><a th:href="@{/ips/delete/{id}(id=${anIp.ipId})}"
 						class="btn btn-danger">Delete</a></td>
 				</tr>

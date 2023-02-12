@@ -4,10 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import ipmanager.dto.ChartData;
 import ipmanager.model.Ip;
 import ipmanager.repository.EmployeeRepository;
 import ipmanager.repository.IpRepository;
@@ -21,7 +19,7 @@ public class IpServiceImpl implements IpService {
 
 	@Autowired
 	private IpRepository ipRepo;
-
+	
 	@Autowired
 	private IpApiService ipApiService;
 
@@ -39,26 +37,34 @@ public class IpServiceImpl implements IpService {
 	@Override
 	public void save(Ip ip) {
 
-		saveWitEmployee(ip);
+		saveWithEmployee(ip);
 	}
 
-	private void saveWitEmployee(Ip ip) {
+	private void saveWithEmployee(Ip ip) {
 		Ip newIp = ipApiService.consultIP(ip.getQuery());
 		newIp.setEmployees(ip.getEmployees());
 		newIp.setStage(ip.getStage());
 		
 		ipRepo.save(newIp);
 	}
-
+	
+	private void updateWithEmployee( Long id, Ip ip) {
+		Ip newIp = ipApiService.consultIP(ip.getQuery());
+		newIp.setEmployees(ip.getEmployees());
+		newIp.setStage(ip.getStage());
+		newIp.setIpId(id);
+		
+		ipRepo.save(newIp);
+	}
 	@Override
 	public void update(Long id, Ip ip) {
-		// TODO Auto-generated method stub
-
+//		ip.setIpId(id);
+		updateWithEmployee(id, ip);
 	}
 
 	@Override
 	public void delete(Long id) {
-		ipRepo.deleteById(id);;
+		ipRepo.deleteById(id);
 
 	}
 

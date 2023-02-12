@@ -54,7 +54,7 @@
 					</thead>
 					<tbody>
 						<tr th:each="aEmployeeIpCount : ${employeeListIpCount}">
-							<td th:text="| ${aEmployeeIpCount.firstName} ${aEmployeeIpCount.lastName}|" />
+							<td th:text="|${aEmployeeIpCount.firstName} ${aEmployeeIpCount.lastName}|" />
 							<td th:text="${aEmployeeIpCount.ipCount}" />
 						</tr>
 
