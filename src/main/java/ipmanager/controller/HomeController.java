@@ -48,7 +48,7 @@ public class HomeController {
 		ObjectMapper objectMapper = new ObjectMapper();
 
 		String jsonString = objectMapper.writeValueAsString(ipData);
-		
+
 		model.addAttribute("ipStageCount", jsonString);
 
 		List<EmployeeIp> employeesIpCount = empRepo.employeeIps();

@@ -19,7 +19,7 @@ public class IpServiceImpl implements IpService {
 
 	@Autowired
 	private IpRepository ipRepo;
-	
+
 	@Autowired
 	private IpApiService ipApiService;
 
@@ -44,18 +44,19 @@ public class IpServiceImpl implements IpService {
 		Ip newIp = ipApiService.consultIP(ip.getQuery());
 		newIp.setEmployees(ip.getEmployees());
 		newIp.setStage(ip.getStage());
-		
+
 		ipRepo.save(newIp);
 	}
-	
-	private void updateWithEmployee( Long id, Ip ip) {
+
+	private void updateWithEmployee(Long id, Ip ip) {
 		Ip newIp = ipApiService.consultIP(ip.getQuery());
 		newIp.setEmployees(ip.getEmployees());
 		newIp.setStage(ip.getStage());
 		newIp.setIpId(id);
-		
+
 		ipRepo.save(newIp);
 	}
+
 	@Override
 	public void update(Long id, Ip ip) {
 //		ip.setIpId(id);
@@ -67,6 +68,5 @@ public class IpServiceImpl implements IpService {
 		ipRepo.deleteById(id);
 
 	}
-
 
 }

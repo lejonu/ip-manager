@@ -59,7 +59,7 @@ public class EmployeeController {
 
 	@GetMapping("/edit/{id}")
 	public String editEmployee(@PathVariable("id") Long id, Model model) {
-		
+
 		Employee employee = empRepo.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid employee id"));
 
 		model.addAttribute(employee);
@@ -67,18 +67,18 @@ public class EmployeeController {
 		return "employees/edit-employee";
 
 	}
-	
+
 	@PostMapping("/update/{id}")
 	public String udpateEmployee(@PathVariable("id") Long id, Employee employee, Model model) {
 		Optional<Employee> emp = empRepo.findById(id);
-		
-		if(emp.isPresent()) {
+
+		if (emp.isPresent()) {
 			employee.setEmployeeId(id);
 			empRepo.save(employee);
 		} else {
 			throw new IllegalArgumentException("Invalid Id");
 		}
-		
+
 		return "redirect:/employees";
 	}
 

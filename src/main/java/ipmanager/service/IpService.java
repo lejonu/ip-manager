@@ -10,15 +10,15 @@ import ipmanager.model.Ip;
  *
  */
 public interface IpService {
-	
+
 	List<Ip> findAll();
-	
+
 	Ip findById(Long id);
-	
+
 	void save(Ip ip);
-	
+
 	void update(Long id, Ip ip);
-	
+
 	void delete(Long id);
-	
+
 }
