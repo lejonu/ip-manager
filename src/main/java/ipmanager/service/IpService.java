@@ -5,9 +5,10 @@ import java.util.List;
 import ipmanager.model.Ip;
 
 /**
+ * Defines Strategy pattern in Ip Domain
+ * So we may have multiple implementations of this interface
  * 
- * @author leonardo
- *
+ * @author Leonardo José Nunes
  */
 public interface IpService {
 

@@ -2,9 +2,7 @@ package ipmanager.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +69,8 @@ public class ProjectRepositoryIntegrationTest {
 		Ip newIp = new Ip();
 		newIp.setIpId(1L);
 		newIp.setStage("PRODUCTION");
+		List<Employee> employees = empRepo.findAll();
+		newIp.setEmployees(employees);
 		ipImpl.update(1L, newIp);
 
 		assertEquals("PRODUCTION", ipImpl.findById(1L).getStage());
