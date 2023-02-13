@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ipmanager.controller"},{"l":"ipmanager.dto"},{"l":"ipmanager.model"},{"l":"ipmanager.repository"},{"l":"ipmanager.service"},{"l":"ipmanager.service.impl"}];updateSearchResults();
