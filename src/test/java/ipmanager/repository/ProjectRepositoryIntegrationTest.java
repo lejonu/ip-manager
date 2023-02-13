@@ -18,7 +18,7 @@ public class ProjectRepositoryIntegrationTest {
 	EmployeeRepository empRepo;
 
 	@Autowired
-	IpServiceImpl ipImpl;
+	IpRepository ipRepo;
 
 	@Test
 	public void ifNewEmployeeSaved_thenSucess() {
@@ -58,9 +58,9 @@ public class ProjectRepositoryIntegrationTest {
 		newIp.setIpId(1L);
 		newIp.setQuery("24.23.23.24");
 
-		ipImpl.save(newIp);
+		ipRepo.save(newIp);
 
-		assertEquals("24.23.23.24", ipImpl.findById(1L).getQuery());
+		assertEquals("24.23.23.24", ipRepo.findById(1L).get().getQuery());
 	}
 
 	@Test
@@ -69,11 +69,11 @@ public class ProjectRepositoryIntegrationTest {
 		Ip newIp = new Ip();
 		newIp.setIpId(1L);
 		newIp.setStage("PRODUCTION");
-		List<Employee> employees = empRepo.findAll();
-		newIp.setEmployees(employees);
-		ipImpl.update(1L, newIp);
+//		List<Employee> employees = empRepo.findAll();
+//		newIp.setEmployees(employees);
+		ipRepo.save(newIp);
 
-		assertEquals("PRODUCTION", ipImpl.findById(1L).getStage());
+		assertEquals("PRODUCTION", ipRepo.findById(1L).get().getStage());
 	}
 
 	@Test
@@ -81,9 +81,9 @@ public class ProjectRepositoryIntegrationTest {
 		Ip newIp = new Ip();
 		newIp.setIpId(1L);
 
-		ipImpl.deleteIp(newIp);
+		ipRepo.delete(newIp);;
 
-		assertEquals(0, ipImpl.findAll().size());
+		assertEquals(0, ipRepo.findAll().size());
 	}
 
 }

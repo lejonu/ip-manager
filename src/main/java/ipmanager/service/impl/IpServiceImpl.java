@@ -40,7 +40,7 @@ public class IpServiceImpl implements IpService {
 		saveWithEmployee(ip);
 	}
 
-	private void saveWithEmployee(Ip ip) {
+	public void saveWithEmployee(Ip ip) {
 		Ip newIp = ipApiService.consultIP(ip.getQuery());
 		newIp.setEmployees(ip.getEmployees());
 		newIp.setStage(ip.getStage());
@@ -48,7 +48,7 @@ public class IpServiceImpl implements IpService {
 		ipRepo.save(newIp);
 	}
 
-	private void updateWithEmployee(Long id, Ip ip) {
+	public void updateWithEmployee(Long id, Ip ip) {
 		Ip newIp = ipApiService.consultIP(ip.getQuery());
 		newIp.setEmployees(ip.getEmployees());
 		newIp.setStage(ip.getStage());
